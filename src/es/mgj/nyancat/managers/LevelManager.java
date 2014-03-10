@@ -66,7 +66,7 @@ public class LevelManager {
 		
 		int randomChance = randomGenerator.nextInt(1500);
 		
-		if(randomChance <= 8)
+		if(randomChance <= 4)
 			spriteManager.allies.add(allie);
 	}
 

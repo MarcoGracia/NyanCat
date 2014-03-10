@@ -15,7 +15,7 @@ public class Enemy extends Character{
 
 	private NyanCat nyanCat;
 	
-	public int lives = 20;
+	public int lives;
 	
 	private Array<Rainbow> rainbows;
 	
@@ -33,7 +33,7 @@ public class Enemy extends Character{
 	public Enemy(Animation animation, float x, float y, float speed) {
 		super(animation, x, y);
 		
-		this.lives = 5;
+		this.lives = 20;
 		stepTime = 0;
 		stepEnd = 8f;
 		stepStart = 5f;
