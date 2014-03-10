@@ -35,6 +35,8 @@ public class ResourceManager {
 		animations.put("speed",
 				new Animation(0.01f, getAtlas("characters").findRegion("speed")));
 		
+		animations.put("muffincat",
+				new Animation(0.01f, getAtlas("characters").findRegion("muffincat")));
 		
 		Animation ikea = 
 		new Animation(0.40f,
@@ -50,6 +52,17 @@ public class ResourceManager {
 		ikea.setPlayMode(Animation.NORMAL);
 		
 		animations.put("ikea", ikea);
+		
+		animations.put("countdown",
+				new Animation(1f,
+				getAtlas("characters").findRegion("5"),
+				getAtlas("characters").findRegion("4"),
+				getAtlas("characters").findRegion("3"),
+				getAtlas("characters").findRegion("2"),
+				getAtlas("characters").findRegion("1"),
+				getAtlas("characters").findRegion("0"),
+				getAtlas("characters").findRegion("0"),
+				getAtlas("characters").findRegion("0")));
 		
 		animations.put("rainbowP",
 				new Animation(0.1f,

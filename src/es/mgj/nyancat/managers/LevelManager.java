@@ -50,6 +50,25 @@ public class LevelManager {
 		
 		
 	}
+	
+	public void generateMuffinCat(){
+		
+		Random randomGenerator = new Random();
+		
+		int randomY = randomGenerator.nextInt(Constantes.SCREEN_HEIGHT - 60) + 30;
+		
+		int randomSpeed = randomGenerator.nextInt(250) + 300;
+		
+		Allied allie = new Allied(ResourceManager.getAnimacion("muffincat"), 
+				Constantes.SCREEN_WIDTH, randomY , randomSpeed);
+		
+		allie.tipo = "muffincat";
+		
+		int randomChance = randomGenerator.nextInt(1500);
+		
+		if(randomChance <= 8)
+			spriteManager.allies.add(allie);
+	}
 
 	public void generateAllie() {
 		

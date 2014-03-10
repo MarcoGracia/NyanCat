@@ -31,6 +31,7 @@ public class SpriteManager implements InputProcessor{
 	public static int rainbowIndex;
 	public LevelManager levelManager;
 	public GameScreen gamescreen;
+	public Allied countDown;
 	
 	public SpriteManager(GameScreen gamescreen){
 		
@@ -42,6 +43,10 @@ public class SpriteManager implements InputProcessor{
 		
 		background = new Allied(ResourceManager.getAnimacion("background"), 0,
 				 0, 0);
+		
+		countDown = new Allied(ResourceManager.getAnimacion("countdown"), 0,
+				 0, 0);
+		this.enemy.setCountDown(countDown);
 		
 		this.enemy.setNyancat(nyanCat);
 		
@@ -77,11 +82,15 @@ public class SpriteManager implements InputProcessor{
 			
 			levelManager.generateSpeed();
 			
+			levelManager.generateMuffinCat();
+			
 			handleInputs(dt);
 			
 			background.update(dt);
 			
 			nyanCat.update(dt);
+			
+			countDown.update(dt);
 			
 			if(enemy.lives > 0)
 				enemy.update(dt, nyanCat);
@@ -166,6 +175,7 @@ public class SpriteManager implements InputProcessor{
 		}
 			
 		if(c.rectangle.overlaps(enemy.rectangle)){
+			
 			if(c.tipo.equals("cat")){
 				if(enemy.lives == 1){
 					
@@ -190,6 +200,11 @@ public class SpriteManager implements InputProcessor{
 				
 				allies.removeValue(c, true);
 				enemy.lives--;
+				
+			}else if(c.tipo.equals("muffincat")){
+				
+				this.enemy.pushBack();
+				allies.removeValue(c, true);
 			}
 			
 		}
@@ -219,7 +234,9 @@ public class SpriteManager implements InputProcessor{
 		}
 		
 		if(enemy.lives > 0){
+			
 			enemy.render(batch);
+			countDown.render(batch);
 		}else{
 			enemy.rectangle.x = -100;
 			enemy.rectangle.y = -100;
